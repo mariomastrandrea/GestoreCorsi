@@ -1,7 +1,7 @@
 package it.polito.tdp.corsi;
 
+import it.polito.tdp.gestorecorsi.model.Model;
 import javafx.application.Application;
-import it.polito.tdp.corsi.model.Model;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
