@@ -1,6 +1,6 @@
 package it.polito.tdp.corsi;
 
-import it.polito.tdp.gestorecorsi.model.Model;
+import it.polito.tdp.gestorecorsi.model.GestoreCorsiModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,19 +8,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class EntryPoint extends Application {
-
+public class EntryPoint extends Application 
+{
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception 
+    {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         
-        Model model = new Model();
+        GestoreCorsiModel model = new GestoreCorsiModel();
         FXMLController controller = loader.getController();
         controller.setModel(model);
         
         stage.setTitle("Gestore Corsi");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -33,7 +35,8 @@ public class EntryPoint extends Application {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         launch(args);
     }
 

@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.gestorecorsi.model.Corso;
-import it.polito.tdp.gestorecorsi.model.Model;
+import it.polito.tdp.gestorecorsi.model.GestoreCorsiModel;
+import it.polito.tdp.gestorecorsi.model.Studente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,9 +20,7 @@ import javafx.scene.control.TextField;
 
 public class FXMLController 
 {
-
-	@SuppressWarnings("unused")
-	private Model model;
+	private GestoreCorsiModel model;
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -81,10 +80,22 @@ public class FXMLController
     	
     	List<Corso> corsi = this.model.getCorsiByPeriodo(periodo);
     	
+    	/*
     	for(Corso c : corsi)
     	{
     		this.txtRisultato.appendText(String.format("%s\n",c.toString()));
     	}
+    	*/
+    	StringBuilder sb = new StringBuilder();    	
+    	for(Corso c : corsi)
+    	{
+    		if(sb.length() > 0)
+    			sb.append('\n');
+    		
+    		sb.append(String.format("%-8s %-4d %-50s %-4d", 
+    				c.getCodiceInsegnamento(), c.getCrediti(), c.getNome(), c.getPeriodoDidattico()));
+    	}
+    	txtRisultato.appendText(sb.toString());
     }
 
     @FXML
@@ -128,13 +139,46 @@ public class FXMLController
     @FXML
     void stampaDivisione(ActionEvent event) 
     {
-
+    	txtRisultato.clear();
+    	
+    	String codice = txtCorso.getText();
+    	
+    	if(!model.esisteCorso(codice))
+    	{
+    		txtRisultato.appendText(String.format("Il corso \"%s\" non esiste!", codice));
+    		return;
+    	}
+    	
+    	Map<String, Integer> divisione = model.getDivisioneCDS(codice);
+    	
+    	for(String s : divisione.keySet())
+    	{
+    		txtRisultato.appendText(String.format("%s --> %d studenti\n", s, divisione.get(s)));
+    	}
     }
 
     @FXML
     void stampaStudenti(ActionEvent event) 
     {
-
+    	txtRisultato.clear();
+    	String codice = txtCorso.getText();
+    	List<Studente> studenti = model.getStudentiByCorso(codice);
+    	
+    	if(!model.esisteCorso(codice))
+    	{
+    		txtRisultato.appendText(String.format("Il corso \"%s\" non esiste!", codice));
+    	}
+    	
+    	if(studenti.isEmpty())
+    	{
+    		txtRisultato.appendText(String.format("Il corso \"%s\" esiste, ma non ha iscritti!", codice));
+    		return;
+    	}
+    	
+    	for(Studente s : studenti)
+    	{
+    		txtRisultato.appendText(s + "\n");
+    	}
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -149,9 +193,10 @@ public class FXMLController
         assert txtRisultato != null : "fx:id=\"txtRisultato\" was not injected: check your FXML file 'Scene.fxml'.";
     }
     
-    public void setModel(Model model) 
+    public void setModel(GestoreCorsiModel model) 
     {
     	this.model = model;
+    	txtRisultato.setStyle("-fx-font-family: monospaced");
     }
     
     

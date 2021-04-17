@@ -8,7 +8,7 @@ public class DBConnect
 {
 	public static Connection getConnection() throws SQLException
 	{
-		String jdbcURL = "jdbc:mariadb://127.0.0.1/iscritticorsi?user=root&password=matematica";
+		String jdbcURL = "jdbc:mariadb://127.0.0.1/iscritticorsi?user=root&password=root";
 		return DriverManager.getConnection(jdbcURL);
 	}
 

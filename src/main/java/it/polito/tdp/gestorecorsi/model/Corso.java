@@ -3,17 +3,37 @@ package it.polito.tdp.gestorecorsi.model;
 public class Corso
 {
 	private String codiceInsegnamento;
-	private int crediti;
+	private Integer crediti;
 	private String nome;
-	private int periodoDidattico; 
+	private Integer periodoDidattico; 
 	
 	
-	public Corso(String codiceInsegnamento, int crediti, String nome, int periodoDidattico)
+	public Corso(String codiceInsegnamento, Integer crediti, String nome, Integer periodoDidattico)
 	{
 		this.codiceInsegnamento = codiceInsegnamento;
 		this.crediti = crediti;
 		this.nome = nome;
 		this.periodoDidattico = periodoDidattico;
+	}
+
+	public String getCodiceInsegnamento()
+	{
+		return codiceInsegnamento;
+	}
+
+	public int getCrediti()
+	{
+		return crediti;
+	}
+
+	public String getNome()
+	{
+		return nome;
+	}
+
+	public int getPeriodoDidattico()
+	{
+		return periodoDidattico;
 	}
 
 	@Override
