@@ -1,4 +1,4 @@
-package it.polito.tdp.corsi;
+package it.polito.tdp.gestorecorsi;
 
 import it.polito.tdp.gestorecorsi.model.GestoreCorsiModel;
 import javafx.application.Application;
@@ -13,7 +13,7 @@ public class EntryPoint extends Application
     @Override
     public void start(Stage stage) throws Exception 
     {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene_gestoreCorsi.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         

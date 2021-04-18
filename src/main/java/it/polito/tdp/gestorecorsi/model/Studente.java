@@ -5,15 +5,15 @@ public class Studente
 	private Integer matricola;
 	private String nome;
 	private String cognome;
-	private String cds;
+	private String corsoDiStudi;
 	
 	
-	public Studente(int matricola, String nome, String cognome, String cds)
+	public Studente(int matricola, String nome, String cognome, String corsoDiStudi)
 	{
 		this.matricola = matricola;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.cds = cds;
+		this.corsoDiStudi = corsoDiStudi;
 	}
 
 	public Integer getMatricola()
@@ -33,7 +33,7 @@ public class Studente
 
 	public String getCds()
 	{
-		return cds;
+		return corsoDiStudi;
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class Studente
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cds == null) ? 0 : cds.hashCode());
+		result = prime * result + ((corsoDiStudi == null) ? 0 : corsoDiStudi.hashCode());
 		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
 		result = prime * result + ((matricola == null) ? 0 : matricola.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -58,12 +58,12 @@ public class Studente
 		if (getClass() != obj.getClass())
 			return false;
 		Studente other = (Studente) obj;
-		if (cds == null)
+		if (corsoDiStudi == null)
 		{
-			if (other.cds != null)
+			if (other.corsoDiStudi != null)
 				return false;
 		}
-		else if (!cds.equals(other.cds))
+		else if (!corsoDiStudi.equals(other.corsoDiStudi))
 			return false;
 		if (cognome == null)
 		{
@@ -92,7 +92,7 @@ public class Studente
 	@Override
 	public String toString()
 	{
-		return String.format("Studente [matricola=%s, nome=%s, cognome=%s, cds=%s]", matricola, nome, cognome, cds);
+		return String.format("%-10s %-25s %-25s %-10s", matricola, nome, cognome, corsoDiStudi);
 	}
 	
 }

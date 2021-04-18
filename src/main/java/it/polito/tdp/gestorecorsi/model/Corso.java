@@ -2,7 +2,7 @@ package it.polito.tdp.gestorecorsi.model;
 
 public class Corso
 {
-	private String codiceInsegnamento;
+	private String codiceCorso;
 	private Integer crediti;
 	private String nome;
 	private Integer periodoDidattico; 
@@ -10,7 +10,7 @@ public class Corso
 	
 	public Corso(String codiceInsegnamento, Integer crediti, String nome, Integer periodoDidattico)
 	{
-		this.codiceInsegnamento = codiceInsegnamento;
+		this.codiceCorso = codiceInsegnamento;
 		this.crediti = crediti;
 		this.nome = nome;
 		this.periodoDidattico = periodoDidattico;
@@ -18,7 +18,7 @@ public class Corso
 
 	public String getCodiceInsegnamento()
 	{
-		return codiceInsegnamento;
+		return codiceCorso;
 	}
 
 	public int getCrediti()
@@ -41,7 +41,7 @@ public class Corso
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codiceInsegnamento == null) ? 0 : codiceInsegnamento.hashCode());
+		result = prime * result + ((codiceCorso == null) ? 0 : codiceCorso.hashCode());
 		return result;
 	}
 
@@ -55,12 +55,12 @@ public class Corso
 		if(getClass() != obj.getClass())
 			return false;
 		Corso other = (Corso) obj;
-		if(codiceInsegnamento == null)
+		if(codiceCorso == null)
 		{
-			if(other.codiceInsegnamento != null)
+			if(other.codiceCorso != null)
 				return false;
 		}
-		else if(!codiceInsegnamento.equals(other.codiceInsegnamento))
+		else if(!codiceCorso.equals(other.codiceCorso))
 			return false;
 		return true;
 	}
@@ -68,8 +68,7 @@ public class Corso
 	@Override
 	public String toString()
 	{
-		return String.format("Corso [codiceInsegnamento = %s, crediti = %d, nome = %s, periodoDidattico = %d]", 
-				codiceInsegnamento, crediti, nome, periodoDidattico);
+		return String.format("%-13s %-8d %-50s %-17d", codiceCorso, crediti, nome, periodoDidattico);
 	}
 	
 }

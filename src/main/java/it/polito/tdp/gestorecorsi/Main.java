@@ -1,4 +1,4 @@
-package it.polito.tdp.corsi;
+package it.polito.tdp.gestorecorsi;
 
 public class Main 
 {
